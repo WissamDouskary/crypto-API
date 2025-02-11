@@ -2,8 +2,8 @@
 
 Class API {
     public function getdatafromapi(){
-        $Api = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?convert=USD&limit=4";
-        $apiKey = "YOURAPI";
+        $Api = "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?convert=USD&limit=10";
+        $apiKey = "6393f138-e6d4-4ad6-8e96-6b2274763938";
 
         //use token in header
         $options = [

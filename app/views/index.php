@@ -8,18 +8,34 @@
     <?php endforeach; ?>
 </ul>
 
- <script>
-     function getcryptodata(){
-         let conn = new XMLHttpRequest();
-         conn.open('GET', "<?php $data['data']['data'] ?>", true);
 
-         conn.onload = function(){
-             if(conn.status == 200){
-                 let data = JSON.parse(conn.responseText);
-                 console.log(data);
+
+
+ <script>
+     function getcryptodata() {
+         let conn = new XMLHttpRequest();
+         conn.open('GET', "http://localhost/crypto-API/app/models/API/php", true);
+
+         conn.onload = function () {
+             if (conn.status === 200) {
+                 try {
+                     let data = JSON.parse(conn.responseText);
+                     console.log(data);
+                 } catch (error) {
+                     console.error("JSON parsing error:", error);
+                     console.log("Response received:", conn.responseText);
+                 }
+             } else {
+                 console.error("API request failed with status:", conn.status);
              }
-         }
+         };
+
+         conn.onerror = function () {
+             console.error("Network error while trying to fetch data.");
+         };
+
          conn.send();
      }
+
      getcryptodata();
  </script>
